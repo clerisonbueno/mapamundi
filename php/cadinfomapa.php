@@ -1,3 +1,6 @@
+<?php
+ session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,7 @@
 <body>
 <div class="container">
     <h1 class="h2 text-center mt-5">Cadastro de eventos</h1>
-    <form action="" method="post">
+    <form action="bd.php" method="post">
     <select class="form-control mb-2" name="pais" id="">
         <option value="">Selecione um país...</option>
         <option value="">Country</option>

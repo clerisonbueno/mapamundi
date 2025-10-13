@@ -14,8 +14,8 @@ session_start()
         <form action="bd.php" method="post" class="d-flex flex-column gap-3
          justify-content-center align-items-center vh-100">
          <h1>Login</h1>
-            <input type="text" name="" id="" placeholder="Digite seu email" class="form-control ">
-            <input type="text" name="" id="" placeholder="Digite sua senha" class="form-control">
+            <input type="text" name="email" id="" placeholder="Digite seu email" class="form-control ">
+            <input type="password" name="senha" id="" placeholder="Digite sua senha" class="form-control">
             <input type="submit" value="enviar" class="btn btn-primary">
         </form>
     </div>
