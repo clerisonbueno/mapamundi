@@ -19,8 +19,7 @@ function Cadastrarcli() {
     ) 
     );
 }
-<<<<<<< HEAD
-    
+    function Cadastrarpais() {
     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
 
 
@@ -35,7 +34,7 @@ function Cadastrarcli() {
 
     ) 
     );
-=======
+}    
 function login(){
     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
 
@@ -58,9 +57,7 @@ function login(){
 }
 
 
->>>>>>> 0f95f3af3a47d286055b24117c5d1b0729449461
-CadastrarBanco()
-
+Cadastrarpais();
 
 
 ?>
