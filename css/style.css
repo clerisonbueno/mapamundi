@@ -1,0 +1,44 @@
+
+* {
+        margin: 5px;
+        padding: 0;
+    }
+
+    body {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        background-color: rgb(24, 23, 41);
+    }
+
+    #nome {
+        position: absolute;
+        background-color: rgb(255, 255, 255);
+        width: fit-content;
+        opacity: 0;
+        border-radius: 5px;
+        border: 3px solid rgb(240, 205, 11);
+        padding: 0px 5px;
+        font-size: 1.5rem;
+
+    }
+
+
+    #contagem_tempo{
+        background-color: white;
+        width: fit-content;
+        font-size: 1.5rem;
+        padding: 5px 5px;
+        border-radius: 5px;
+        border: 3px solid rgb(240, 205, 11);        
+    }
+    
+
+    svg path {
+        cursor: pointer;
+    }
+
+    /*
+    svg path:hover{
+        fill: rgb(240, 205, 11);
+    }
+    */
