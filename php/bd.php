@@ -1,7 +1,14 @@
 
-
-
 <?php
+
+if ($_GET['gt'] == "caduser"){
+    Cadastrarcli();
+}elseif ($_GET['gt'] == "cadpais"){
+    Cadastrarpais();
+}elseif ($_GET['gt'] == "login"){
+    login();
+}
+
 session_start();
 function Cadastrarcli() {
     
@@ -18,6 +25,7 @@ function Cadastrarcli() {
 
     ) 
     );
+    header("Location: login.php");
 }
     function Cadastrarpais() {
     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
@@ -34,6 +42,7 @@ function Cadastrarcli() {
 
     ) 
     );
+    header("Location: ../index.html");
 }    
 function login(){
     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
@@ -57,7 +66,7 @@ function login(){
 }
 
 
-Cadastrarpais();
+
 
 
 ?>

@@ -12,27 +12,17 @@ session_start();
 </head>
 <body>
     <div class="container">
-        <h1>Cadastro</h1>
-        <p>Preencha todas as informações:</p>
-        <form action="bd.php" method="post">
-            <!-- Criação da primeira linha -->
-            <div class="column gap-3">
-                <!-- criação da primeira coluna ocupando todo o espaço = 12 -->
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="nome" id="" placeholder="Digite o nome...">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="email" id="" placeholder="Digite o email...">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="senha" id="" placeholder="Digite a senha...">
-                </div>
-            </div>
 
-            <div class="row mt-3 text-center">
-                <div class="col-md-12">
-                    <input type="submit" class="btn btn-primary btn-lg" value="Cadastrar">
-                </div>
+        <form action="bd.php?gt=caduser" method="post" class="d-flex flex-column gap-3
+         justify-content-center align-items-center vh-100 ">
+            <h1>Cadastro</h1>
+            <p>Preencha todas as informações:</p>
+            <input type="text" class="form-control" name="nome" id="" placeholder="Digite o seu nome..." >
+            <input type="text" class="form-control" name="email" id="" placeholder="Digite o seu email...">
+            <input type="text" class="form-control" name="senha" id="" placeholder="Digite a  sua senha...">
+            <input type="submit" class="btn btn-primary btn-lg" value="Cadastrar">
+                <!--envia para login-->
+                <p>já tem uma conta? <a href="login.php">logue aqui</a></p>
             </div>
         </form>
     </div>

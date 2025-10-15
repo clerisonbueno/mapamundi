@@ -11,13 +11,15 @@ session_start()
 </head>
 <body>
     <div class="container">
-        <form action="bd.php" method="post" class="d-flex flex-column gap-3
+        <form action="bd.php?gt=login" method="post" class="d-flex flex-column gap-3
          justify-content-center align-items-center vh-100">
          <h1>Login</h1>
             <input type="text" name="email" id="" placeholder="Digite seu email" class="form-control ">
             <input type="password" name="senha" id="" placeholder="Digite sua senha" class="form-control">
-            <input type="submit" value="enviar" class="btn btn-primary">
+            <input type="submit" value="enviar" class="btn btn-primary" >
+            <p>não tem uma conta ? <a href="cadcli.php" class="text-primary">cadastre-se aqui</a></p>
         </form>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

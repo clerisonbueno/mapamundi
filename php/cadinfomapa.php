@@ -2,7 +2,7 @@
  session_start()
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,9 @@
 </head>
 <body>
 <div class="container">
+    <form action="bd.php?gt=cadpais" method="post" class="d-flex flex-column gap-3
+         justify-content-center align-items-center vh-100">
     <h1 class="h2 text-center mt-5">Cadastro de eventos</h1>
-    <form action="bd.php" method="post">
     <select class="form-control mb-2" name="pais" id="">
         <option value="">Selecione um país...</option>
         <option value="">Country</option>
