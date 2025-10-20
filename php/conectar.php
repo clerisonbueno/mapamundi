@@ -1,7 +1,4 @@
 <?php
-$pais = $_POST[""];
-
-
 
 header('Content-Type: application/json');
  

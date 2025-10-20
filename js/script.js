@@ -15,6 +15,9 @@ const modalCountryInfo = document.getElementById('modal-pais-info');
 const closeModalButton = document.querySelector('.modal-fechar');
 const modalOverlay = document.querySelector('.modal-overlay');
 
+// A página PHP que irá processar o pedido e retornar os dados
+const PHP_ENDPOINT = "php/conectar.php";
+
 // Função para fechar o modal
 function closeModal() {
     modal.classList.add('modal-hidden');
@@ -57,10 +60,49 @@ document.querySelectorAll(".allPaths").forEach(e => {
     e.addEventListener("click", function () {
         // 1. Preenche o modal com as informações do país clicado
         modalCountryName.innerText = e.id; // e.id é o nome do país (ex: "Brazil")
-        modalCountryInfo.innerText = `Aqui você pode carregar informações sobre ${e.id}.`;
+        //modalCountryInfo.innerText = `Aqui você pode carregar informações sobre ${e.id}.`;
         
         // 2. Mostra o modal removendo a classe que o esconde
         modal.classList.remove('modal-hidden');
+
+        fetch(PHP_ENDPOINT);
+
+        // 3. Faz a requisição ao PHP
+        fetch(PHP_ENDPOINT, {
+            method: 'POST', // É mais seguro para enviar dados
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ country: e.id }) // Envia o nome do país no corpo da requisição
+        })
+        .then(response => {
+            // Verifica se a resposta foi bem-sucedida (status 200-299)
+            if (!response.ok) {
+                throw new Error(`Erro HTTP! Status: ${response.status}`);
+            }
+            // Converte a resposta para um objeto JavaScript (JSON)
+            return response.json(); 
+        })
+        .then(data => {
+            // 4. Preenche o modal com os dados recebidos do PHP
+            
+            // Supondo que 'data' seja um objeto como: 
+            // { capital: "Brasília", population: "214M", description: "País da América do Sul..." }
+            
+            modalCountryName.innerText = data.countryName || countryName; // Usa o nome do país do PHP ou o original
+            modalCountryInfo.innerHTML = `
+                <strong>Capital:</strong> ${data.capital}<br>
+                <strong>População:</strong> ${data.population}<br>
+                <p>${data.description}</p>
+            `;
+            
+            // Aqui você pode adicionar lógica para mostrar outras informações (imagem, etc.)
+        })
+        .catch(error => {
+            // 5. Trata erros (falha na rede, erro no PHP, etc.)
+            console.error("Erro ao carregar dados do país:", error);
+            modalCountryInfo.innerText = `Erro ao carregar os dados para ${countryName}. Tente novamente. (${error.message})`;
+        });
 
     });
 });
