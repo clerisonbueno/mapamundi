@@ -27,6 +27,7 @@ foreach ($dados as $key => $value) {
   echo   "<td>".$dados[$key]["continente"]."</td>";
   echo   "<td>".$dados[$key]["regiao_continente"]."</td>";
   echo   "<td>".$dados[$key]["evento"]."</td>";
+  echo  "<td> <a class='link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' href='bd.php?id=".$dados[$key]['id']."&gt=alterar'>excluir</a> </td>";;
   echo"</tr>";
 } 
 ?>

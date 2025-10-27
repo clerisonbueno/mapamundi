@@ -12,7 +12,7 @@ $dados = consulta();
 </head>
 <body>
 <div class="container">
-    <form action="bd.php?gt=alterar" method="post" class="d-flex flex-column gap-3
+    <form action="bd.php?gt=atualizar" method="post" class="d-flex flex-column gap-3
          justify-content-center align-items-center vh-100">
     <h1 class="h2 text-center mt-5">Cadastro de eventos</h1>
 <select class="form-control mb-2" name="pais" id="" required>

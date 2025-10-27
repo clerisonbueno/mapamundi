@@ -9,9 +9,11 @@ if ($_GET['gt'] == "caduser"){
     Cadastrarpais();
 }elseif ($_GET['gt'] == "login"){
     login();
-}elseif ($GET['gt'] == "alterar") {
-    atualizar();
-
+}elseif ($_GET['gt'] == "atualizar") {
+    atualizar($_SESSION['id']);
+}elseif($GET['gt'] == "alterar"){
+    $_SESSION['id'] = $_GET['id'];
+    header("locate:updateinfomapa.php");
 }
 
 
