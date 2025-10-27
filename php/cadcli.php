@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+ if (isset($_SESSION['nome'])) {
+    echo $_SESSION['nome'];
+ } else {
+    header("Location:login.php");
+ }
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +28,7 @@ session_start();
             <input type="text" class="form-control" name="senha" id="" placeholder="Digite a  sua senha...">
             <input type="submit" class="btn btn-primary btn-lg" value="Cadastrar">
                 <!--envia para login-->
-                <p>já tem uma conta? <a href="login.php">logue aqui</a></p>
+               
             </div>
         </form>
     </div>
