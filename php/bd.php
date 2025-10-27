@@ -1,5 +1,7 @@
 
 <?php
+session_start();
+
 
 if ($_GET['gt'] == "caduser"){
     Cadastrarcli();
@@ -7,9 +9,21 @@ if ($_GET['gt'] == "caduser"){
     Cadastrarpais();
 }elseif ($_GET['gt'] == "login"){
     login();
+}elseif ($GET['gt'] == "alterar") {
+    atualizar();
+
 }
 
-session_start();
+
+
+function consulta(){ 
+        $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
+    $sql = $pdo->prepare("SELECT * FROM `cadpais`");
+    $sql->execute(array());
+    $dados = $sql->fetchALL(PDO::FETCH_ASSOC);
+    return $dados;
+}
+
 function Cadastrarcli() {
     
     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
@@ -43,7 +57,28 @@ function Cadastrarcli() {
     ) 
     );
     header("Location: ../index.html");
-}    
+}  
+
+function atualizar(){
+    $alteração = $_POST['alterar'];
+
+     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
+     $sql = $pdo->prepare("UPDATE `usuarios` SET
+                                            nome=?,
+                                            rua=?,
+                                            WHERE id=?");
+
+
+
+
+    $sql->execute(array($alteração['nome'],
+                        $alteração['rua'],
+                        
+));
+
+}
+
+
 function login(){
     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
 
