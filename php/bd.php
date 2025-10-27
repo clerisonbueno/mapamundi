@@ -1,5 +1,7 @@
 
 <?php
+ error_reporting(E_ALL & ~E_WARNING);
+
 session_start();
 
 
@@ -11,9 +13,9 @@ if ($_GET['gt'] == "caduser"){
     login();
 }elseif ($_GET['gt'] == "atualizar") {
     atualizar($_SESSION['id']);
-}elseif($GET['gt'] == "alterar"){
+}elseif($_GET['gt'] == "alterar"){
     $_SESSION['id'] = $_GET['id'];
-    header("locate:updateinfomapa.php");
+    header("Location:updateinfomapa.php");
 }
 
 
@@ -58,25 +60,32 @@ function Cadastrarcli() {
 
     ) 
     );
-    header("Location: ../index.html");
+    header("Location: ../index.php");
 }  
 
 function atualizar(){
-    $alteração = $_POST['alterar'];
+    //$alteração = $_POST['alterar'];
 
      $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
-     $sql = $pdo->prepare("UPDATE `usuarios` SET
-                                            nome=?,
-                                            rua=?,
+     $sql = $pdo->prepare("UPDATE `cadpais` SET
+                                            pais=?,
+                                            continente=?,
+                                            regiao_continente=?,
+                                            evento=?
                                             WHERE id=?");
 
 
 
 
-    $sql->execute(array($alteração['nome'],
-                        $alteração['rua'],
+    $sql->execute(array($_POST['pais'],
+                          $_POST['continente'],
+                          $_POST['regiao_continente'],
+                          $_POST['evento'],
+                          $_SESSION['id']
                         
 ));
+
+header("Location: ../index.php");
 
 }
 
@@ -89,12 +98,12 @@ function login(){
     $sql->execute(array($_POST['email'], sha1($_POST['senha'])));
 
     $dados = $sql ->fetchALL(PDO::FETCH_ASSOC);
-    print_r($dados);
+    //print_r($dados);
   
     if (!empty($dados)) {
         $usuario = $dados[0];
         $_SESSION['nome'] = $usuario['nome'];
-        header("Location: ../index.html");
+        header("Location: ../index.php");
     } else {
         header("Location: login.php");
 

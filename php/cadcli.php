@@ -1,7 +1,7 @@
 <?php
 session_start();
 
- if (isset($_SESSION['nome'])) {
+ if (!empty($_SESSION['nome'])) {
     echo $_SESSION['nome'];
  } else {
     header("Location:login.php");

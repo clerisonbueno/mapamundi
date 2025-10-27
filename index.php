@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,11 +24,16 @@
         <p id="nome_pais">Name</p>
     </div>
 
-    <div id="contagem_tempo">
+    <div id="contagem_tempo d-flex flex-columns">
         <!-- <p id="tempo">Tempo</p> -->
         <a class="btn btn-dark" href="php/cadinfomapa.php">Cadastrar Informações</a>
+        <a class="btn btn-dark" href="php/tabelainfomapa.php">Modificar Dados</a>
+        <?php
+            if (!empty($_SESSION['nome'])) {
+               echo "<a class='btn btn-dark' href='php/sair.php'>Sair</a>";
+            }
+        ?>
     </div>
-
     <!--MODAL CAIXA-->
     <div id="pais-modal" class="modal-hidden">
     <div class="modal-overlay"></div>

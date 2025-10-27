@@ -1,6 +1,14 @@
 <?php
+    error_reporting(E_ALL & ~E_WARNING);
+    
     include_once('bd.php');
     $dados = consulta();
+
+    if (!empty($_SESSION['nome'])) {
+        echo $_SESSION['nome'];
+    } else {
+        header("Location:login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,27 +19,31 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
+<div class="container mt-5"> 
 
-<table class="table table-hover">
-  <tr>
-    <td>pais</td>
-    <td>continente</td>
-    <td>regiao_continente</td>
-    <td>evento</td>
-  </tr>
-<?php
-foreach ($dados as $key => $value) {
 
-  echo"<tr>";
-  echo   "<td>".$dados[$key]["pais"]."</td>";
-  echo   "<td>".$dados[$key]["continente"]."</td>";
-  echo   "<td>".$dados[$key]["regiao_continente"]."</td>";
-  echo   "<td>".$dados[$key]["evento"]."</td>";
-  echo  "<td> <a class='link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' href='bd.php?id=".$dados[$key]['id']."&gt=alterar'>excluir</a> </td>";;
-  echo"</tr>";
-} 
-?>
-</table>
+  <table class="table table-hover">
+    <tr>
+      <td class="h4">País</td>
+      <td class="h4">Continente</td>
+      <td class="h4">Região do Continente</td>
+      <td class="h4">Evento</td>
+    </tr>
+  <?php
+  foreach ($dados as $key => $value) {
+
+    echo"<tr>";
+    echo   "<td>".$dados[$key]["pais"]."</td>";
+    echo   "<td>".$dados[$key]["continente"]."</td>";
+    echo   "<td>".$dados[$key]["regiao_continente"]."</td>";
+    echo   "<td>".$dados[$key]["evento"]."</td>";
+    echo  "<td> <a class='btn btn-warning' href='bd.php?id=".$dados[$key]['id']."&gt=alterar'>Alterar</a> </td>";;
+    echo"</tr>";
+  } 
+  ?>
+  </table>
+
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

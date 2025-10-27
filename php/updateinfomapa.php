@@ -1,6 +1,12 @@
 <?php
 include_once('bd.php');
 $dados = consulta();
+
+if (!empty($_SESSION['nome'])) {
+        echo $_SESSION['nome'];
+    } else {
+        header("Location:login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -225,7 +231,7 @@ $dados = consulta();
     </optgroup>
 </select>
 
-        <input class="form-control mb-2" type="text" name="evento" id="" placeholder= <?php echo $dados[0]['evento'] ?>   require>
+        <input class="form-control mb-2" type="text" name="evento" id="" value="<?php echo $dados[0]['evento'] ?>"  require>
         <input class="form-control btn btn-primary" type="submit" value="Cadastrar Informações">
     </form>
 </div>
