@@ -2,7 +2,7 @@
 session_start();
 
  if (!empty($_SESSION['nome'])) {
-    echo $_SESSION['nome'];
+    //echo $_SESSION['nome'];
  } else {
     header("Location:login.php");
  }
@@ -17,10 +17,25 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
+
+ <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="../index.php">Mapa Mundi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="d-flex" role="search">
+        
+        <a class="btn btn-outline-primary" href="sair.php" type="submit">Sair</a>
+      </form>
+  </div>
+</nav>
+
     <div class="container">
 
         <form action="bd.php?gt=caduser" method="post" class="d-flex flex-column gap-3
-         justify-content-center align-items-center vh-100 ">
+         justify-content-center align-items-center vh-50">
             <h1>Cadastro</h1>
             <p>Preencha todas as informações:</p>
             <input type="text" class="form-control" name="nome" id="" placeholder="Digite o seu nome..." >

@@ -28,6 +28,14 @@ function consulta(){
     return $dados;
 }
 
+function consultaAlterar($id) {
+    $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
+    $sql = $pdo->prepare("SELECT * FROM `cadpais` WHERE id=?");
+    $sql->execute(array($id));
+    $dados = $sql->fetchALL(PDO::FETCH_ASSOC);
+    return $dados;
+}
+
 function Cadastrarcli() {
     
     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');

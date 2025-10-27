@@ -5,7 +5,7 @@
     $dados = consulta();
 
     if (!empty($_SESSION['nome'])) {
-        echo $_SESSION['nome'];
+        //echo $_SESSION['nome'];
     } else {
         header("Location:login.php");
     }
@@ -19,7 +19,21 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-<div class="container mt-5"> 
+ <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="../index.php">Mapa Mundi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="d-flex" role="search">
+        
+        <a class="btn btn-outline-primary" href="sair.php" type="submit">Sair</a>
+      </form>
+  </div>
+</nav>
+
+<div class="container mt-3"> 
 
 
   <table class="table table-hover">
