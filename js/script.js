@@ -58,42 +58,6 @@ document.querySelectorAll(".allPaths").forEach((e) => {
     document.getElementById("nome").style.opacity = 0;
   });
 
-  // MUDANÇA DO MODAL OCORRE AQUI
-  e.addEventListener("click", function () {
-    // 1. Preenche o modal com as informações do país clicado
-    console.log(e.id);
-    modalCountryName.innerText = e.id; // e.id é o nome do país (ex: "Brazil")
-    //modalCountryInfo.innerText = `Aqui você pode carregar informações sobre ${e.id}.`;
-
-    // 2. Mostra o modal removendo a classe que o esconde
-    modal.classList.remove("modal-hidden");
-
-    fetch(PHP_ENDPOINT);
-
-    // 3. Faz a requisição ao PHP
-    fetch(PHP_ENDPOINT, {
-      method: "POST", // É mais seguro para enviar dados
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ country: e.id }), // Envia o nome do país no corpo da requisição
-    })
-      .then((response) => {
-        // Verifica se a resposta foi bem-sucedida (status 200-299)
-        if (!response.ok) {
-          throw new Error(`Erro HTTP! Status: ${response.status}`);
-        }
-        // Converte a resposta para um objeto JavaScript (JSON)
-        return response.json();
-      })
-      .then((data) => {
-        // 4. Preenche o modal com os dados recebidos do PHP
-
-        // Supondo que 'data' seja um objeto como:
-        // { capital: "Brasília", population: "214M", description: "País da América do Sul..." }
-
-<<<<<<< HEAD
-    // MUDANÇA DO MODAL OCORRE AQUI
     e.addEventListener("click", function () {
 
         const countryName = e.id;
@@ -142,13 +106,6 @@ document.querySelectorAll(".allPaths").forEach((e) => {
                 <strong>Continente:</strong> ${data.Continente}<br>
                 <strong>Região:</strong> ${data.Regiao}<br>
                 <p><strong>Evento: </strong> ${data.evento}</p>
-=======
-        modalCountryName.innerText = data.countryName || countryName; // Usa o nome do país do PHP ou o original
-        modalCountryInfo.innerHTML = `
-                <strong>Capital:</strong> ${data.capital}<br>
-                <strong>População:</strong> ${data.population}<br>
-                <p>${data.description}</p>
->>>>>>> 602c798641c941f8195adea7c083be7848962809
             `;
 
         // Aqui você pode adicionar lógica para mostrar outras informações (imagem, etc.)
