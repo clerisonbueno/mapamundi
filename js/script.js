@@ -113,7 +113,7 @@ document.querySelectorAll(".allPaths").forEach((e) => {
       .catch((error) => {
         // 5. Trata erros (falha na rede, erro no PHP, etc.)
         console.error("Erro ao carregar dados do país:", error);
-        modalCountryInfo.innerText = `Erro ao carregar os dados para ${countryName}. Tente novamente. (${error.message})`;
+        modalCountryInfo.innerText = `Erro ao carregar os dados para ${countryName}. Cadastre os dados e tente novamente.`;
       });
   });
 });
