@@ -55,20 +55,28 @@ function Cadastrarcli() {
     function Cadastrarpais() {
     $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
 
+    $pais = $_POST['pais'];
+    $checkSql = $pdo->prepare("SELECT * FROM `cadpais` WHERE pais = ?");
+    $checkSql->execute([$pais]);
 
-    $sql = $pdo->prepare("INSERT INTO `cadpais`
-    VALUES (null,?,?,?,?)");
+    if ($checkSql->rowCount() == 0) {
+        $sql = $pdo->prepare("INSERT INTO `cadpais`
+        VALUES (null,?,?,?,?)");
 
-    
-    $sql->execute( array( $_POST['pais'],
-                          $_POST['continente'],
-                          $_POST['regiao_continente'],
-                          $_POST['evento'], 
 
-    ) 
-    );
-    header("Location: ../index.php");
-}  
+        $sql->execute( array( $_POST['pais'],
+                              $_POST['continente'],
+                              $_POST['regiao_continente'],
+                              $_POST['evento'],
+
+        )
+        );
+        header("Location: ../index.php");
+    } else {
+        header("Location: cadinfomapa.php?error=duplicate");
+    }
+    exit();
+}
 
 function atualizar(){
     //$alteração = $_POST['alterar'];

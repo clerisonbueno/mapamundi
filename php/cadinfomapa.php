@@ -6,6 +6,10 @@
  } else {
     header("Location:login.php");
  }
+
+if (isset($_GET['error']) && $_GET['error'] === 'duplicate') {
+    echo '<script>alert("Este país já está cadastrado.");</script>';
+}
  
 
 ?>
