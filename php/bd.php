@@ -1,6 +1,5 @@
-
 <?php
- error_reporting(E_ALL & ~E_WARNING);
+error_reporting(E_ALL & ~E_WARNING);
 
 session_start();
 
@@ -21,7 +20,7 @@ if ($_GET['gt'] == "caduser"){
 
 
 function consulta(){ 
-        $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
+    $pdo = new PDO('mysql:host=localhost;dbname=mapamundi','root','');
     $sql = $pdo->prepare("SELECT * FROM `cadpais`");
     $sql->execute(array());
     $dados = $sql->fetchALL(PDO::FETCH_ASSOC);
@@ -79,7 +78,8 @@ function atualizar(){
                                             pais=?,
                                             continente=?,
                                             regiao_continente=?,
-                                            evento=?
+                                            evento=?,
+                                            modifica=?
                                             WHERE id=?");
 
 
@@ -89,6 +89,7 @@ function atualizar(){
                           $_POST['continente'],
                           $_POST['regiao_continente'],
                           $_POST['evento'],
+                          $_SESSION['email'],
                           $_SESSION['id']
                         
 ));
@@ -111,7 +112,8 @@ function login(){
     if (!empty($dados)) {
         $usuario = $dados[0];
         $_SESSION['nome'] = $usuario['nome'];
-        header("Location: ../index.php");
+        $_SESSION['email'] = $usuario['email'];
+        header("Location: cadinfomapa.php");
     } else {
         header("Location: login.php");
 

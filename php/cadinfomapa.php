@@ -27,7 +27,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <form class="d-flex" role="search">
-        
+        <a class="btn btn-outline-primary mx-2" href="../index.php" type="submit">Voltar ao Mapa Mundi</a>
         <a class="btn btn-outline-primary" href="sair.php" type="submit">Sair</a>
       </form>
   </div>

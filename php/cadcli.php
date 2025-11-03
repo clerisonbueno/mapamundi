@@ -40,7 +40,7 @@ session_start();
             <p>Preencha todas as informações:</p>
             <input type="text" class="form-control" name="nome" id="" placeholder="Digite o seu nome..." >
             <input type="text" class="form-control" name="email" id="" placeholder="Digite o seu email...">
-            <input type="text" class="form-control" name="senha" id="" placeholder="Digite a  sua senha...">
+            <input type="password" class="form-control" name="senha" id="" placeholder="Digite a  sua senha...">
             <input type="submit" class="btn btn-primary btn-lg" value="Cadastrar">
                 <!--envia para login-->
                
